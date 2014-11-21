@@ -20,13 +20,3 @@ You can read more about Tennis scores [here](http://en.wikipedia.org/wiki/Tennis
 4. If at least three points have been scored by each side and a player has one more point than his opponent, the score of the game is "advantage" for the player in the lead.
 
 You need only report the score for the current game. Sets and Matches are out of scope.
-
-# Get going quickly with Cyber-dojo
-
-As an alternative to downloading the code, click one of the links below to create a new cyber-dojo to work in, then press "start" to get going coding.
-
-- [Python](http://cyber-dojo.com/forker/fork/435E5C1C88?avatar=moose&tag=5)
-- [Ruby](http://cyber-dojo.com/forker/fork/3367E4B0E9?avatar=raccoon&tag=4)
-- [Java](http://cyber-dojo.com/forker/fork/426FA07B60?avatar=raccoon&tag=3)
-- [C++](http://cyber-dojo.com/forker/fork/A06DCDA217?avatar=wolf&tag=5)
-- [C#](http://cyber-dojo.com/forker/fork/672E047F5D?avatar=buffalo&tag=8)
