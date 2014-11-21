@@ -1,4 +1,3 @@
-
 class TennisGame1
 
   def initialize(player1Name, player2Name)
