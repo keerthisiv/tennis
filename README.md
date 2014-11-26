@@ -52,21 +52,22 @@ You need only report the score for the current game. Sets and Matches are out of
 
 There are three chunks of dirty code in the ``lib/`` directory any or all of which can be used as a starting point. They are called ``tennis1.rb``, ``tennis2.rb`` and ``tennis3.rb``. At any point in your journey tonight, you'll be working on one of these files in isolation.
 
-The scoreboard is represented by our unit tests in the ``spec/`` directory. The scoreboard is not under our control and cannot be changed, which has two implications for us:
-1. We have to nominate one of the files to be "live" by moving, copying or symlinking it to ``tennis.rb`` (note: the initial ``tennis.rb`` is a copy of ``tennis1.rb``), and
-2. The interface between the scoreboard and our code cannot be changed.
+The scoreboard is represented by our unit tests in the ``spec/`` directory. The scoreboard is not under our control and cannot be changed, which has two implications for us:  
+1. The interface between the scoreboard and our code cannot be changed, and  
+2. We have to nominate one of the files to be "live". We could have used branches, but sometimes it's a good idea to get filesystem practice so we're going to manage the "live" implemenation by moving, copying or symlinking it to ``tennis.rb`` (note: the initial ``tennis.rb`` is a copy of ``tennis1.rb``).
 
-I prefer to use symlinking, so here's how I prepared my repo to reset it for working on the ``tennis1`` starting point:
+I think this is a ripe moment for symlinks (esp. if you're using OSX, Linux or a unix shell on Windows), so here's how I prepared my repo to reset it for working on the ``tennis1`` code as a starting point:
 ```sh
 rm -f lib/tennis.rb
 ln -s lib/tennis1.rb lib/tennis.rb
 ```
-Then I can make changes to tennis.rb. Later, I did this to make ``tennis2`` the live code:
+Then I can make changes to the file pointed at by tennis.rb.
+Later, I did this to make ``tennis2`` the live code:
 ```sh
 rm -f lib/tennis.rb
 ln -s lib/tennis2.rb lib/tennis.rb
 ```
-And again I'd make changes to tennis.rb, knowing that those changes were actually stored in tennis2.rb.
+And again I'd make changes to whatever file is pointed at by tennis.rb, knowing that those changes were actually stored in tennis2.rb.
 
 With our ugly and old (but working) code and our "virtual scoreboard" unit tests, we're ready to take on the job of refactoring.
 
