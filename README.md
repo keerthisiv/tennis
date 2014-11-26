@@ -25,7 +25,7 @@ Using bundler 1.7.4
 Your bundle is complete!
 Use `bundle show [gemname]` to see where a bundled gem is installed.
 ```
-######Note: if you use rbenv...
+##Note: if you use rbenv...
 ```sh
 % rbenv rehash
 ```
@@ -36,7 +36,7 @@ Imagine you work for a consultancy company, and one of your colleagues has been 
 
 Tennis has a rather quirky scoring system, and to newcomers it can be a little difficult to keep track of. The tennis society has contracted you to build a scoreboard to display the current score during tennis games. 
 
-Your task is to write a ``TennisGame`` class containing the logic which outputs the correct score as a string for display on the scoreboard. When a player scores a point, it triggers a method to be called on your class letting you know who scored the point. Later, you will get a call “score()” from the scoreboard asking what it should display. This method should return a string with the current score.
+Your task is to write a ``TennisGame`` class containing the logic which outputs the correct score as a string for display on the scoreboard. When a player scores a point, it triggers a method to be called on your class letting you know who scored the point. Later, you will get a call ``score`` from the scoreboard asking what it should display. This method should return a string with the current score.
 
 You can read more about Tennis scores [here](http://en.wikipedia.org/wiki/Tennis#Scoring) which is summarized below:
 
@@ -47,47 +47,46 @@ You can read more about Tennis scores [here](http://en.wikipedia.org/wiki/Tennis
 
 You need only report the score for the current game. Sets and Matches are out of scope.
 
+## Your Mission (Should You Choose to Accept It)
 
-Running the tests
------------------
-######Run the characterization test 
-```sh
-% rspec ./spec/gilded_rose_characterization_spec.rb
-.
+There are three chunks of dirty code in the ``lib/`` directory any or all of which can be used as a starting point. They are called ``tennis1.rb``, ``tennis2.rb`` and ``tennis3.rb``. At any point in your journey tonight, you'll be working on one of these files. Because of this, we have set up the tests to work on the file called ``tennis.rb``. So, before you do anything you need to nominate one of these files by moving, copying or symlinking it to ``tennis.rb`` (note: the initial ``tennis.rb`` is a copy of ``tennis1.rb``).
 
-Finished in 0.00169 seconds
-1 example, 0 failures
-```
-######Run approvals to see the differences between expected and actual test results
-```sh
-% approvals verify
-```
-
-
-There are three chunks of dirty code in the ``lib/`` directory that you may use as a starting point: ``tennis1.rb``, ``tennis2.rb`` and ``tennis3.rb``. Before you do anything you need to nominate one of these by moving, copying or symlinking it to ``tennis.rb``. If you prefer to use symlinking, here's how its done:
+I prefer to use symlinking, so here's how I prepared my repo for the first round of refactoring:
 ```sh
 rm -f lib/tennis.rb
 ln -s lib/tennis1.rb lib/tennis.rb
 ```
+Later, I did this to work on the second file:
+```sh
+rm -f lib/tennis.rb
+ln -s lib/tennis2.rb lib/tennis.rb
+```
+With the old code and unit tests, we're ready to take on the job of refactoring. On Ruby Hack Night, we suggest you focus on the following goals based on your team's capabilities:
 
-With the old code and unit tests, we're ready to take on the job of refactoring. On Ruby Hack Night, we suggest you focus on the following goals based on your capabilities:
+##Beginners
+1. refactor ``tennis1`` for cleanliness and clarity
+2. refactor ``tennis2`` for cleanliness and clarity trying to improve on your first attempt
+3. refactor ``tennis3`` for cleanliness and clarity trying to improve on your previous attempts
 
-Beginners
-===
-1. refactor lib/tennis.rb, making it 
+##Intermediates
+1. refactor ``tennis1`` for cleanliness and clarity
+2. refactor ``tennis2`` to follow the ["State pattern"](http://en.wikipedia.org/wiki/State_pattern)
 
-Intermediate
-1. refactor lib/tennis.rb,
-2. refactor lib/tennis.rb to follow the State pattern
+##Advanced
+1. refactor ``tennis1`` for cleanliness and clarity
+2. refactor ``tennis2`` to follow the ["State pattern"](http://en.wikipedia.org/wiki/State_pattern)
+3. refactor ``tennis3`` to follow the ["Visitor pattern"](http://en.wikipedia.org/wiki/Visitor_pattern)
 
-Advanced
-1. refactor lib/tennis.rb
-2. refactor lib/tennis.rb
-1. refactor lib/tennis.rb so that it is easier for you
-2. achieve the primary goal of implementing "conjured" items, and
-3. achieve any or all of the stretch goals, if you found the above a bit too easy.
+Running the tests
+-----------------
+To test the code in ``tennis.rb``, do the following:
+```sh
+rspec ./spec/tennis_spec.rb
+.
 
-Your mission is the same as in the original Gilded Rose Kata.  Have fun and watch out for the goblin!
+Finished in 0.00115 seconds
+1 example, 0 failures
+```
 
 Final Notes
 ===
