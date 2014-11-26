@@ -15,7 +15,7 @@ end
 
 desc 'Run mutation testing to assess the characterization'
 task :mutate do
-  system 'mutant --include lib --require tennis --use rspec Tennis'
+  system 'mutant --include lib --require tennis --use rspec .score'
 end
 
 desc 'Approve the received characterization'
