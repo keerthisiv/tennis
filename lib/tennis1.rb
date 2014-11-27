@@ -8,10 +8,15 @@ class TennisGame
   end
         
   def won_point(playerName)
-    if playerName == @player1Name
-      @p1points += 1
-    else
-      @p2points += 1
+    playerName == @player1Name ? @p1points += 1 : @p2points += 1
+  end
+
+  def equal_scores
+    case @p1points 
+    when 0 then "Love-All"
+    when 1 then "Fifteen-All"
+    when 2 then "Thirty-All"
+    else "Deuce"
     end
   end
   
@@ -19,11 +24,7 @@ class TennisGame
     result = ""
     tempScore=0
     if (@p1points==@p2points)
-      result = {
-          0 => "Love-All",
-          1 => "Fifteen-All",
-          2 => "Thirty-All",
-      }.fetch(@p1points, "Deuce")
+      result = equal_scores
     elsif (@p1points>=4 or @p2points>=4)
       minusResult = @p1points-@p2points
       if (minusResult==1)
