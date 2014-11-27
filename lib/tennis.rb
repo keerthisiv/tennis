@@ -11,53 +11,42 @@ class TennisGame
     playerName == @player1Name ? @p1points += 1 : @p2points += 1
   end
 
-  def equal_scores
-    case @p1points 
-    when 0 then "Love-All"
-    when 1 then "Fifteen-All"
-    when 2 then "Thirty-All"
-    else "Deuce"
-    end
+  def points_diff
+    @p1points - @p2points
   end
 
   def after_deuce
-    case @p1points - @p2points
+    case points_diff
     when 1 then "Advantage " + @player1Name
     when -1 then "Advantage " + @player2Name
-    else who_won
+    else "Win for " + winner 
     end
   end
 
-  def who_won
-    if @p1points - @p2points >= 2 
-      "Win for " + @player1Name
-    else
-      "Win for " + @player2Name
+  def winner
+   points_diff >= 2 ? @player1Name : @player2Name
+  end
+
+  def score(points)
+    case points
+    when 0 then "Love"
+    when 1 then "Fifteen"
+    when 2 then "Thirty"
+    when 3 then "Forty"
     end
+  end
+
+  def current_score
+    "#{score(@p1points)}-#{score(@p2points)}" 
   end
   
   def say_score
-    result = ""
-    if (@p1points==@p2points)
-      result = equal_scores
+    if @p1points == @p2points
+      @p1points > 2 ? "Deuce" : "#{score(@p1points)}-All"
     elsif (@p1points>=4 or @p2points>=4)
-      result = after_deuce
+      after_deuce
     else
-      (1...3).each do |i|
-        if (i==1)
-          tempScore = @p1points
-        else
-          result+="-"
-          tempScore = @p2points
-        end
-        result += {
-            0 => "Love",
-            1 => "Fifteen",
-            2 => "Thirty",
-            3 => "Forty",
-        }[tempScore]
-      end
+     current_score 
     end
-    result
   end
 end
