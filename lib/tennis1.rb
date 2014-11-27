@@ -11,6 +11,7 @@ class TennisGame
     playerName == @player1Name ? @p1points += 1 : @p2points += 1
   end
 
+
   def equal_scores
     case @p1points 
     when 0 then "Love-All"
@@ -20,10 +21,16 @@ class TennisGame
     end
   end
   
+  def after_deuce
+   case @p1points
+   when 
+   end
+  end
+
   def say_score
     result = ""
     tempScore=0
-    if (@p1points==@p2points)
+    if @p1points == @p2points
       result = equal_scores
     elsif (@p1points>=4 or @p2points>=4)
       minusResult = @p1points-@p2points

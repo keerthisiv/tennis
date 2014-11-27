@@ -8,10 +8,31 @@ class TennisGame
   end
         
   def won_point(playerName)
-    if playerName == @player1Name
-      @p1points += 1
+    playerName == @player1Name ? @p1points += 1 : @p2points += 1
+  end
+
+  def equal_scores
+    case @p1points 
+    when 0 then "Love-All"
+    when 1 then "Fifteen-All"
+    when 2 then "Thirty-All"
+    else "Deuce"
+    end
+  end
+
+  def after_deuce
+    case @p1points - @p2points
+    when 1 then "Advantage " + @player1Name
+    when -1 then "Advantage " + @player2Name
+    else who_won
+    end
+  end
+
+  def who_won
+    if @p1points - @p2points >= 2 
+      "Win for " + @player1Name
     else
-      @p2points += 1
+      "Win for " + @player2Name
     end
   end
   
@@ -19,22 +40,9 @@ class TennisGame
     result = ""
     tempScore=0
     if (@p1points==@p2points)
-      result = {
-          0 => "Love-All",
-          1 => "Fifteen-All",
-          2 => "Thirty-All",
-      }.fetch(@p1points, "Deuce")
+      result = equal_scores
     elsif (@p1points>=4 or @p2points>=4)
-      minusResult = @p1points-@p2points
-      if (minusResult==1)
-        result ="Advantage " + @player1Name
-      elsif (minusResult ==-1)
-        result ="Advantage " + @player2Name
-      elsif (minusResult>=2)
-        result = "Win for " + @player1Name
-      else
-        result ="Win for " + @player2Name
-      end
+      result = after_deuce
     else
       (1...3).each do |i|
         if (i==1)
