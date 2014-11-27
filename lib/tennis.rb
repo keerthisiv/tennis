@@ -38,7 +38,6 @@ class TennisGame
   
   def say_score
     result = ""
-    tempScore=0
     if (@p1points==@p2points)
       result = equal_scores
     elsif (@p1points>=4 or @p2points>=4)
